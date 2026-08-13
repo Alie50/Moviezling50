@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Movie {
+  id        String   @id @default(cuid())
+  name      String
+  story     String
+  duration  String
+  stars     String
+  rating    String
+  link      String
+  poster    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Admin {
+  id       String @id @default(cuid())
+  username String @unique
+  password String
+}
